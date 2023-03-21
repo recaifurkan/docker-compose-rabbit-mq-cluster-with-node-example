@@ -1,0 +1,9 @@
+{
+  "name": "prod-cons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "receive.js",
+  "dependencies": {
+    "amqplib": "^0.10.3"
+  }
+}

@@ -1,0 +1,40 @@
+version: '3'
+services:
+    rabbitmq01:
+        image: rabbitmq:3.8-management
+        container_name: rabbitmq01
+        hostname: rabbitmq01
+        environment:
+          - RABBITMQ_DEFAULT_USER=admin
+          - RABBITMQ_DEFAULT_PASS=admin
+          - RABBITMQ_ERLANG_COOKIE=rabbitcookie
+        # volumes:
+        #   - ./data1:/var/lib/rabbitmq
+    rabbitmq02:
+        image: rabbitmq:3.8-management
+        container_name: rabbitmq02
+        hostname: rabbitmq02
+        environment:
+          - RABBITMQ_DEFAULT_USER=admin
+          - RABBITMQ_DEFAULT_PASS=admin
+          - RABBITMQ_ERLANG_COOKIE=rabbitcookie
+        # volumes:
+        #   - ./data2:/var/lib/rabbitmq
+    rabbitmq03:
+        image: rabbitmq:3.8-management
+        container_name: rabbitmq03
+        hostname: rabbitmq03
+        environment:
+          - RABBITMQ_DEFAULT_USER=admin
+          - RABBITMQ_DEFAULT_PASS=admin
+          - RABBITMQ_ERLANG_COOKIE=rabbitcookie
+        # volumes:
+        #   - ./data3:/var/lib/rabbitmq
+    nginxrabbitmq:
+        image: nginx:latest
+        container_name: nginxrabbitmq
+        volumes:
+          - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+        ports:
+            - "15672:15672"
+            - "5672:5672"
